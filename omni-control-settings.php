@@ -1,0 +1,384 @@
+<?php
+
+/*
+|
+|   @since 0.0.1
+|
+*/
+
+
+/*
+|
+|   @wp-action admin_menu
+|
+*/
+function omnictrl_admin_menu() {
+    add_options_page(
+        __('Omni Control Settings', 'omni-control'),
+        __('Omni Control', 'omni-control'),
+        'manage_options',
+        'omni-control',
+        'omnictrl_options_page'
+    );
+}
+add_action('admin_menu', 'omnictrl_admin_menu');
+
+/*
+|
+|
+|
+*/
+function omnictrl_options_page() {
+    echo '<div class="wrap">' . "\n";
+
+    echo '<h2>' . __('Omni Control', 'omni-control') . '</h2>' . "\n";
+
+    echo '<style>';
+    echo '.form-table th { width: 320px; }';
+    echo '#omnictrl-unselect-all { margin-left: 10px; }';
+    echo '</style>' . "\n";
+
+    echo '<p>';
+    submit_button(__('Select All', 'omni-control'), 'secondary', 'omnictrl-select-all', false);
+    submit_button(__('Deselect All', 'omni-control'), 'secondary', 'omnictrl-unselect-all', false);
+    echo '</p>' . "\n";
+
+    echo '<form action="options.php" method="post">' . "\n";
+    settings_fields('omnictrl');
+    do_settings_sections('omnictrl');
+    submit_button();
+    echo '</form>' . "\n";
+
+    echo '</div>' . "\n";
+}
+
+/*
+|
+|   @wp-action admin_init
+|
+*/
+function omnictrl_settings_init() {
+    register_setting('omnictrl', 'omnictrl');
+
+    add_settings_section(
+        'omnictrl-misc',
+        __('Miscellaneous', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'disable-smilies',
+        __('Disable smilies', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-misc',
+        [
+            'field' => 'disable-smilies',
+            'label_for' => 'omnictrl[disable-smilies]'
+        ]
+    );
+
+    add_settings_field(
+        'disable-visual-editor',
+        __('Disable visual editor', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-misc',
+        [
+            'field' => 'disable-visual-editor',
+            'label_for' => 'omnictrl[disable-visual-editor]'
+        ]
+    );
+
+    add_settings_field(
+        'reverse-document-title-parts',
+        __('Reverse the parts of the document title', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-misc',
+        [
+            'field' => 'reverse-document-title-parts',
+            'label_for' => 'omnictrl[reverse-document-title-parts]'
+        ]
+    );
+
+    add_settings_section(
+        'omnictrl-html-doc',
+        __('HTML document', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'remove-doc-css-js-type',
+        __('Remove type from CSS and JavaScript resources', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc',
+        [
+            'field' => 'remove-doc-css-js-type',
+            'label_for' => 'omnictrl[remove-doc-css-js-type]'
+        ]
+    );
+
+    add_settings_section(
+        'omnictrl-html-doc-head',
+        __('HTML document HEAD', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'remove-doc-head-rsd-link',
+        __('Remove RSD link', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc-head',
+        [
+            'field' => 'remove-doc-head-rsd-link',
+            'label_for' => 'omnictrl[remove-doc-head-rsd-link]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-doc-head-wlw-manifest-link',
+        __('Remove WLW manifest link', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc-head',
+        [
+            'field' => 'remove-doc-head-wlw-manifest-link',
+            'label_for' => 'omnictrl[remove-doc-head-wlw-manifest-link]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-doc-head-shortlink',
+        __('Remove shortlink', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc-head',
+        [
+            'field' => 'remove-doc-head-shortlink',
+            'label_for' => 'omnictrl[remove-doc-head-shortlink]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-doc-head-wordpress-version',
+        __('Remove WordPress version', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc-head',
+        [
+            'field' => 'remove-doc-head-wordpress-version',
+            'label_for' => 'omnictrl[remove-doc-head-wordpress-version]'
+        ]
+    );
+
+    add_settings_section(
+        'omnictrl-perf',
+        __('Performance', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'remove-dashicons',
+        __('Remove Dashicons CSS for visitors', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-perf',
+        [
+            'field' => 'remove-dashicons',
+            'label_for' => 'omnictrl[remove-dashicons]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-gutenberg-css',
+        __('Remove Gutenberg CSS', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-perf',
+        [
+            'field' => 'remove-gutenberg-css',
+            'label_for' => 'omnictrl[remove-gutenberg-css]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-jquery-migrate',
+        __('Remove jQuery Migrate', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-perf',
+        [
+            'field' => 'remove-jquery-migrate',
+            'label_for' => 'omnictrl[remove-jquery-migrate]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-css-js-query-strings',
+        __('Remove query string from static resources', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-perf',
+        [
+            'field' => 'remove-css-js-query-strings',
+            'label_for' => 'omnictrl[remove-css-js-query-strings]'
+        ]
+    );
+
+    add_settings_section(
+        'omnictrl-http-headers',
+        __('HTTP response headers', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'remove-http-headers-shortlink',
+        __('Remove shortlink', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-http-headers',
+        [
+            'field' => 'remove-http-headers-shortlink',
+            'label_for' => 'omnictrl[remove-http-headers-shortlink]'
+        ]
+    );
+
+    add_settings_section(
+        'omnictrl-admin',
+        __('Administration area', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'remove-update-maintenance-nag',
+        __('Remove update/maintenance nag for non-admins', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-admin',
+        [
+            'field' => 'remove-update-maintenance-nag',
+            'label_for' => 'omnictrl[remove-update-maintenance-nag]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-help-tabs',
+        __('Remove help tabs', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-admin',
+        [
+            'field' => 'remove-help-tabs',
+            'label_for' => 'omnictrl[remove-help-tabs]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-admin-footer-message',
+        __('Remove message from footer', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-admin',
+        [
+            'field' => 'remove-admin-footer-message',
+            'label_for' => 'omnictrl[remove-admin-footer-message]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-admin-footer-version',
+        __('Remove version from footer', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-admin',
+        [
+            'field' => 'remove-admin-footer-version',
+            'label_for' => 'omnictrl[remove-admin-footer-version]'
+        ]
+    );
+
+    add_settings_section(
+        'omnictrl-wp-toolbar',
+        __('WP Toolbar', 'omni-control'),
+        null,
+        'omnictrl'
+    );
+
+    add_settings_field(
+        'remove-wp-toolbar-wp-menu',
+        __('Remove WordPress menu', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-wp-toolbar',
+        [
+            'field' => 'remove-wp-toolbar-wp-menu',
+            'label_for' => 'omnictrl[remove-wp-toolbar-wp-menu]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-wp-toolbar-customize',
+        __('Remove Customize link', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-wp-toolbar',
+        [
+            'field' => 'remove-wp-toolbar-customize',
+            'label_for' => 'omnictrl[remove-wp-toolbar-customize]'
+        ]
+    );
+
+    add_settings_field(
+        'remove-howdy',
+        __('Remove <em>Howdy</em>', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-wp-toolbar',
+        [
+            'field' => 'remove-howdy',
+            'label_for' => 'omnictrl[remove-howdy]'
+        ]
+    );
+
+    if (class_exists('UpdraftPlus')) {
+        add_settings_field(
+            'remove-wp-toolbar-updraftplus',
+            __('Remove UpdraftPlus menu', 'omni-control'),
+            'omnictrl_render_checkbox',
+            'omnictrl',
+            'omnictrl-wp-toolbar',
+            [
+                'field' => 'remove-wp-toolbar-updraftplus',
+                'label_for' => 'omnictrl[remove-wp-toolbar-updraftplus]'
+            ]
+        );
+    }
+}
+add_action('admin_init', 'omnictrl_settings_init');
+
+/*
+|
+|
+|
+*/
+function omnictrl_render_checkbox($args) {
+    $options    = get_option('omnictrl');
+    $field      = $args['field'];
+    $name       = 'omnictrl[' . $field . ']';
+    $retrieved  = isset($options[$field])? 1: 0;
+
+    printf(
+        '<input class="omnictrl-checkbox" type="checkbox" id="%1$s" name="%1$s" %2$s value="1"/>',
+        $name,
+        checked($retrieved, 1, 0)
+    );
+}
