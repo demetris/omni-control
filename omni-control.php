@@ -7,7 +7,7 @@
     Plugin URI:             https://bitbucket.org/demetris/omni-control
     Description:            An assortment of tweaks for WordPress
     Version:                0.2.4
-    Author:                 Demetris kikizas
+    Author:                 Demetris Kikizas
     Author URI:             https://kikizas.com/
     Licence:                GPL-2.0
     License URI:            https://opensource.org/licenses/GPL-2.0
