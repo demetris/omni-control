@@ -1,4 +1,7 @@
 ﻿
+##  0.2.5 – 2019-07-27
+-   Added option to disable pings (pingbacks) completely.
+
 ##  0.2.4 – 2019-01-14
 -   Replaced Bitbucket Plugin URI with GitHub Plugin URI.
 

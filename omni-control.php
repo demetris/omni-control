@@ -4,9 +4,9 @@
     OMNI CONTROL FOR WORDPRESS
 
     Plugin Name:            Omni Control
-    Plugin URI:             https://bitbucket.org/demetris/omni-control
+    Plugin URI:             https://github.com/demetris/omni-control
     Description:            An assortment of tweaks for WordPress
-    Version:                0.2.4
+    Version:                0.2.5
     Author:                 Demetris Kikizas
     Author URI:             https://kikizas.com/
     Licence:                GPL-2.0
