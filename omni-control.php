@@ -112,6 +112,10 @@ if (!empty($options['disable-visual-editor'])) {
     add_filter('user_can_richedit', '__return_false');
 }
 
+if (!empty($options['disable-pings'])) {
+    add_filter('pings_open', '__return_false');
+}
+
 if (!empty($options['reverse-document-title-parts'])) {
     /*
     |

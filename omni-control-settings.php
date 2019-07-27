@@ -92,6 +92,18 @@ function omnictrl_settings_init() {
     );
 
     add_settings_field(
+        'disable-pings',
+        __('Disable pings completely', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-misc',
+        [
+            'field' => 'disable-pings',
+            'label_for' => 'omnictrl[disable-pings]'
+        ]
+    );
+
+    add_settings_field(
         'reverse-document-title-parts',
         __('Reverse the parts of the document title', 'omni-control'),
         'omnictrl_render_checkbox',
