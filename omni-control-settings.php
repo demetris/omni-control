@@ -104,6 +104,18 @@ function omnictrl_settings_init() {
     );
 
     add_settings_field(
+        'remove-meta-widget-wordpress-link',
+        __('Remove WordPress.org link from meta widget', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-misc',
+        [
+            'field' => 'remove-meta-widget-wordpress-link',
+            'label_for' => 'omnictrl[remove-meta-widget-wordpress-link]'
+        ]
+    );
+
+    add_settings_field(
         'reverse-document-title-parts',
         __('Reverse the parts of the document title', 'omni-control'),
         'omnictrl_render_checkbox',

@@ -116,6 +116,10 @@ if (!empty($options['disable-pings'])) {
     add_filter('pings_open', '__return_false');
 }
 
+if (!empty($options['remove-meta-widget-wordpress-link'])) {
+    add_filter('widget_meta_poweredby', '__return_empty_string');
+}
+
 if (!empty($options['reverse-document-title-parts'])) {
     /*
     |
