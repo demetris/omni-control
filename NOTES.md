@@ -8,6 +8,7 @@ NOTES
 
 -   jQuery Migrate is required by the following plugins:
     -   MainWP (2018-07-00)
+    -   WP All Export (2020-02-00)
 
 
 CODE SAMPLES
