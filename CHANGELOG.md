@@ -1,4 +1,7 @@
 ﻿
+##  0.2.7 – 2020-04-17
+-   Added option to remove prev/next rel links from document head.
+
 ##  0.2.6 – 2019-12-08
 -   Added option to remove WordPress.org link from meta widget.
 
