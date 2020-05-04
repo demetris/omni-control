@@ -1,17 +1,13 @@
 <?php
 
-/*
-|
-|   @since 0.0.1
-|
-*/
+/**
+ *
+ *
+ *  @since 0.0.1
+ *
+ *
+ */
 
-
-/*
-|
-|   @wp-action admin_menu
-|
-*/
 function omnictrl_admin_menu() {
     add_options_page(
         __('Omni Control Settings', 'omni-control'),
@@ -23,11 +19,6 @@ function omnictrl_admin_menu() {
 }
 add_action('admin_menu', 'omnictrl_admin_menu');
 
-/*
-|
-|
-|
-*/
 function omnictrl_options_page() {
     echo '<div class="wrap">' . "\n";
 
@@ -52,11 +43,6 @@ function omnictrl_options_page() {
     echo '</div>' . "\n";
 }
 
-/*
-|
-|   @wp-action admin_init
-|
-*/
 function omnictrl_settings_init() {
     register_setting('omnictrl', 'omnictrl');
 
@@ -429,11 +415,6 @@ function omnictrl_settings_init() {
 }
 add_action('admin_init', 'omnictrl_settings_init');
 
-/*
-|
-|
-|
-*/
 function omnictrl_render_checkbox($args) {
     $options    = get_option('omnictrl');
     $field      = $args['field'];
