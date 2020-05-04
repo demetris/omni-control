@@ -60,6 +60,10 @@ function omnictrl_options_page() {
 function omnictrl_settings_init() {
     register_setting('omnictrl', 'omnictrl');
 
+    #
+    #   Settings: Miscellaneous
+    #
+
     add_settings_section(
         'omnictrl-misc',
         __('Miscellaneous', 'omni-control'),
@@ -127,6 +131,10 @@ function omnictrl_settings_init() {
         ]
     );
 
+    #
+    #   Settings: HTML document
+    #
+
     add_settings_section(
         'omnictrl-html-doc',
         __('HTML document', 'omni-control'),
@@ -145,6 +153,10 @@ function omnictrl_settings_init() {
             'label_for' => 'omnictrl[remove-doc-css-js-type]'
         ]
     );
+
+    #
+    #   Settings: HTML document head
+    #
 
     add_settings_section(
         'omnictrl-html-doc-head',
@@ -213,6 +225,10 @@ function omnictrl_settings_init() {
         ]
     );
 
+    #
+    #   Settings: Performance
+    #
+
     add_settings_section(
         'omnictrl-perf',
         __('Performance', 'omni-control'),
@@ -268,6 +284,10 @@ function omnictrl_settings_init() {
         ]
     );
 
+    #
+    #   Settings: HTTP response headers
+    #
+
     add_settings_section(
         'omnictrl-http-headers',
         __('HTTP response headers', 'omni-control'),
@@ -286,6 +306,10 @@ function omnictrl_settings_init() {
             'label_for' => 'omnictrl[remove-http-headers-shortlink]'
         ]
     );
+
+    #
+    #   Settings: Administration area
+    #
 
     add_settings_section(
         'omnictrl-admin',
@@ -341,6 +365,10 @@ function omnictrl_settings_init() {
             'label_for' => 'omnictrl[remove-admin-footer-version]'
         ]
     );
+
+    #
+    #   Settings: WP Toolbar
+    #
 
     add_settings_section(
         'omnictrl-wp-toolbar',
