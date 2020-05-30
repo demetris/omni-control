@@ -1,4 +1,7 @@
 ﻿
+##  0.2.8 – 2020-05-30
+-   Added option to remove REST API link from HTTP response headers.
+
 ##  0.2.7 – 2020-04-17
 -   Added option to remove prev/next rel links from document head.
 
