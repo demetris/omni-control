@@ -293,6 +293,18 @@ function omnictrl_settings_init() {
         ]
     );
 
+    add_settings_field(
+        'remove-http-headers-rest-api-link',
+        __('Remove REST API link', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-http-headers',
+        [
+            'field' => 'remove-http-headers-rest-api-link',
+            'label_for' => 'omnictrl[remove-http-headers-rest-api-link]'
+        ]
+    );
+
     #
     #   Settings: Administration area
     #

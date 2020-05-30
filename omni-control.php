@@ -229,6 +229,10 @@ if (!empty($options['remove-http-headers-shortlink'])) {
     remove_action('template_redirect', 'wp_shortlink_header', 11);
 }
 
+if (!empty($options['remove-http-headers-rest-api-link'])) {
+    remove_action('template_redirect', 'rest_output_link_header', 11, 0);
+}
+
 if (!empty($options['remove-update-maintenance-nag'])) {
     function omnictrl_remove_update_maintenance_nag() {
         if (!current_user_can('update_core')) {
@@ -242,7 +246,10 @@ if (!empty($options['remove-update-maintenance-nag'])) {
 if (!empty($options['remove-help-tabs'])) {
     function omnictrl_remove_help_tabs() {
         $screen = get_current_screen();
-        $screen->remove_help_tabs();
+
+        if ($screen) {
+            $screen->remove_help_tabs();
+        }
     }
     add_action('admin_head', 'omnictrl_remove_help_tabs');
 }
