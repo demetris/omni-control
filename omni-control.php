@@ -179,6 +179,10 @@ if (!empty($options['remove-doc-head-prev-next-rel-links'])) {
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 }
 
+if (!empty($options['remove-doc-head-canonical-link'])) {
+    remove_action('wp_head', 'rel_canonical');
+}
+
 if (!empty($options['remove-doc-head-wordpress-version'])) {
     remove_action('wp_head', 'wp_generator');
 }

@@ -212,6 +212,18 @@ function omnictrl_settings_init() {
     );
 
     add_settings_field(
+        'remove-doc-head-canonical-link',
+        __('Remove canonical link', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc-head',
+        [
+            'field' => 'remove-doc-head-canonical-link',
+            'label_for' => 'omnictrl[remove-doc-head-canonical-link]'
+        ]
+    );
+
+    add_settings_field(
         'remove-doc-head-wordpress-version',
         __('Remove WordPress version', 'omni-control'),
         'omnictrl_render_checkbox',
