@@ -1,4 +1,7 @@
 ﻿
+##  0.2.8 – 2020-08-28
+-   Added option to remove REST API link from the document head.
+
 ##  0.2.8 – 2020-05-30
 -   Added option to remove REST API link from HTTP response headers.
 

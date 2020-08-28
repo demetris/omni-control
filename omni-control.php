@@ -167,6 +167,10 @@ if (!empty($options['remove-doc-head-wlw-manifest-link'])) {
     remove_action('wp_head', 'wlwmanifest_link');
 }
 
+if (!empty($options['remove-doc-head-rest-api-link'])) {
+    remove_action('wp_head', 'rest_output_link_wp_head', 10);
+}
+
 if (!empty($options['remove-doc-head-shortlink'])) {
     remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 }

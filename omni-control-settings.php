@@ -176,6 +176,18 @@ function omnictrl_settings_init() {
     );
 
     add_settings_field(
+        'remove-doc-head-rest-api-link',
+        __('Remove REST API link', 'omni-control'),
+        'omnictrl_render_checkbox',
+        'omnictrl',
+        'omnictrl-html-doc-head',
+        [
+            'field' => 'remove-doc-head-rest-api-link',
+            'label_for' => 'omnictrl[remove-doc-head-rest-api-link]'
+        ]
+    );
+
+    add_settings_field(
         'remove-doc-head-shortlink',
         __('Remove shortlink', 'omni-control'),
         'omnictrl_render_checkbox',
