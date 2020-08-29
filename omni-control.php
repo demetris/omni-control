@@ -338,7 +338,7 @@ if (!empty($options['remove-wp-toolbar-wp-menu'])) {
      *  @wp-action admin_bar_menu
      *
      */
-    function wp_toolbar_remove_wp_logo($wptb) {
+    function wp_toolbar_remove_wp_logo(\WP_Admin_Bar $wptb): void {
         $wptb->remove_node('wp-logo');
     }
     add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_wp_logo', 99);
@@ -351,7 +351,7 @@ if (!empty($options['remove-wp-toolbar-customize'])) {
      *  @wp-action admin_bar_menu
      * 
      */
-    function wp_toolbar_remove_customize($wptb) {
+    function wp_toolbar_remove_customize(\WP_Admin_Bar $wptb): void {
         $wptb->remove_node('customize');
     }
     add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_customize', 99);
