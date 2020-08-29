@@ -338,8 +338,8 @@ if (!empty($options['remove-wp-toolbar-wp-menu'])) {
      *  @wp-action admin_bar_menu
      *
      */
-    function wp_toolbar_remove_wp_logo(\WP_Admin_Bar $wptb): void {
-        $wptb->remove_node('wp-logo');
+    function wp_toolbar_remove_wp_logo(\WP_Admin_Bar $adminbar): void {
+        $adminbar->remove_node('wp-logo');
     }
     add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_wp_logo', 99);
 }
@@ -351,8 +351,8 @@ if (!empty($options['remove-wp-toolbar-customize'])) {
      *  @wp-action admin_bar_menu
      * 
      */
-    function wp_toolbar_remove_customize(\WP_Admin_Bar $wptb): void {
-        $wptb->remove_node('customize');
+    function wp_toolbar_remove_customize(\WP_Admin_Bar $adminbar): void {
+        $adminbar->remove_node('customize');
     }
     add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_customize', 99);
 }
@@ -364,11 +364,11 @@ if (!empty($options['remove-howdy'])) {
      *  @wp-filter admin_bar_menu
      *
      */
-    function remove_howdy($wptb) {
-        $node = $wptb->get_node('my-account');
+    function remove_howdy($adminbar) {
+        $node = $adminbar->get_node('my-account');
         $text = str_replace('Howdy, ', '', $node->title);
 
-        $wptb->add_node([
+        $adminbar->add_node([
             'id' => 'my-account',
             'title' => $text,
         ]);
