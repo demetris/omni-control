@@ -37,7 +37,7 @@ require dirname(__FILE__) . '/omni-control-settings.php';
  *
  *
  */
-register_activation_hook(__FILE__, 'omnictrl_register_activation_hook');
+register_activation_hook(__FILE__, 'OmniCtrl\set_activation_hook');
 
 /**
  *
@@ -46,7 +46,7 @@ register_activation_hook(__FILE__, 'omnictrl_register_activation_hook');
  *  @since 0.0.1
  *
  */
-function omnictrl_register_activation_hook() {
+function set_activation_hook() {
     set_transient('omnictrl-activation-notice', true, 10);
 }
 
@@ -58,7 +58,7 @@ function omnictrl_register_activation_hook() {
  *  @wp-action admin_notices
  *
  */
-function omnictrl_admin_notices_activation() {
+function admin_notices_activation() {
     if (get_transient('omnictrl-activation-notice')) {
         $text = __('Omni Control settings', 'omni-control');
         $href = admin_url('options-general.php?page=omni-control');
@@ -74,14 +74,14 @@ function omnictrl_admin_notices_activation() {
         delete_transient('omnictrl-activation-notice');
     }
 }
-add_action('admin_notices', 'omnictrl_admin_notices_activation');
+add_action('admin_notices', 'OmniCtrl\admin_notices_activation');
 
 /**
  *
  *  @wp-action admin_enqueue_scripts
  *
  */
-function omnictrl_enqueue_admin_assets() {
+function enqueue_admin_assets() {
     if (get_current_screen()->id !== 'settings_page_omni-control') {
         return;
     }
@@ -89,7 +89,7 @@ function omnictrl_enqueue_admin_assets() {
     wp_enqueue_script('omni-control-admin', plugin_dir_url(__FILE__) . 'assets/js/main.js', ['jquery'], OMNICTRL_VERSION, true);
     wp_enqueue_style('omni-control-admin', plugin_dir_url(__FILE__) . 'assets/css/main.css', [], OMNICTRL_VERSION);
 }
-add_action('admin_enqueue_scripts', 'omnictrl_enqueue_admin_assets');
+add_action('admin_enqueue_scripts', 'OmniCtrl\enqueue_admin_assets');
 
 /**
  *
@@ -106,14 +106,14 @@ $options = get_option('omnictrl');
  *  @wp-filter plugin_action_links_
  *
  */
-function omnictrl_plugin_action_links($links) {
+function plugin_action_links($links) {
     $name = __('Settings', 'omni-control');
     $href = admin_url('options-general.php?page=omni-control');
     $link = ['<a href="' . $href . '">' . $name . '</a>'];
 
     return array_merge($links, $link);
 }
-add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'omnictrl_plugin_action_links');
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'OmniCtrl\plugin_action_links');
 
 if (!empty($options['disable-smilies'])) {
     add_filter('option_use_smilies', '__return_false');
@@ -146,7 +146,7 @@ if (!empty($options['reverse-document-title-parts'])) {
      *  @return array
      *
      */
-    function omnictrl_document_title_parts_reverse($title) {
+    function document_title_parts_reverse($title) {
         $sitename = '';
 
         if (isset($title['site'])) {
@@ -155,20 +155,20 @@ if (!empty($options['reverse-document-title-parts'])) {
 
         return ['site' => $sitename] + $title;
     }
-    add_filter('document_title_parts', 'omnictrl_document_title_parts_reverse');
+    add_filter('document_title_parts', 'OmniCtrl\document_title_parts_reverse');
 }
 
 if (!empty($options['remove-doc-css-js-type'])) {
-    function omnictrl_remove_css_type($html) {
+    function remove_css_type($html) {
         return str_replace("type='text/css' ", '', $html);
     }
-    add_filter('style_loader_tag', 'omnictrl_remove_css_type');
+    add_filter('style_loader_tag', 'OmniCtrl\remove_css_type');
 
-    function omnictrl_remove_js_type($html) {
+    function remove_js_type($html) {
         return str_replace("type='text/javascript' ", '', $html);
         return str_replace(' type="text/javascript"', '', $html);
     }
-    add_filter('script_loader_tag', 'omnictrl_remove_js_type');
+    add_filter('script_loader_tag', 'OmniCtrl\remove_js_type');
 }
 
 if (!empty($options['remove-doc-head-rsd-link'])) {
@@ -200,19 +200,19 @@ if (!empty($options['remove-doc-head-wordpress-version'])) {
 }
 
 if (!empty($options['remove-dashicons'])) {
-    function omnictrl_remove_dashicons() {
+    function remove_dashicons() {
         if (!is_user_logged_in()) {
             wp_deregister_style('dashicons');
         }
     }
-    add_action('wp_print_styles', 'omnictrl_remove_dashicons', 99);
+    add_action('wp_print_styles', 'OmniCtrl\remove_dashicons', 99);
 }
 
 if (!empty($options['remove-gutenberg-css'])) {
-    function omnictrl_remove_gutenberg_css() {
+    function remove_gutenberg_css() {
         wp_dequeue_style('wp-block-library');
     }
-    add_action('wp_print_styles', 'omnictrl_remove_gutenberg_css', 100);
+    add_action('wp_print_styles', 'OmniCtrl\remove_gutenberg_css', 100);
 }
 
 if (!empty($options['remove-jquery-migrate'])) {
@@ -225,7 +225,7 @@ if (!empty($options['remove-jquery-migrate'])) {
      *  @param WP_Scripts $scripts WP_Scripts object.
      *
      */
-    function omnictrl_remove_jquery_migrate($scripts) {
+    function remove_jquery_migrate($scripts) {
         if (isset($scripts->registered['jquery'])) {
             $script = $scripts->registered['jquery'];
 
@@ -234,15 +234,15 @@ if (!empty($options['remove-jquery-migrate'])) {
             }
         }
     }
-    add_action('wp_default_scripts', 'omnictrl_remove_jquery_migrate');
+    add_action('wp_default_scripts', 'OmniCtrl\remove_jquery_migrate');
 }
 
 if (!empty($options['remove-css-js-query-strings'])) {
-    function omnictrl_remove_query_string($src) {
+    function remove_query_string($src) {
         return add_query_arg('ver', null, $src);
     }
-    add_filter('script_loader_src', 'omnictrl_remove_query_string', 15, 1);
-    add_filter('style_loader_src', 'omnictrl_remove_query_string', 15, 1);
+    add_filter('script_loader_src', 'OmniCtrl\remove_query_string', 15, 1);
+    add_filter('style_loader_src', 'OmniCtrl\remove_query_string', 15, 1);
 }
 
 if (!empty($options['remove-http-headers-shortlink'])) {
@@ -254,24 +254,29 @@ if (!empty($options['remove-http-headers-rest-api-link'])) {
 }
 
 if (!empty($options['remove-update-maintenance-nag'])) {
-    function omnictrl_remove_update_maintenance_nag() {
+    function remove_update_maintenance_nag() {
         if (!current_user_can('update_core')) {
             remove_action('admin_notices', 'update_nag', 3);
             remove_action('admin_notices', 'maintenance_nag', 10);
         }
     }
-    add_action('admin_head', 'omnictrl_remove_update_maintenance_nag', 1);
+    add_action('admin_head', 'OmniCtrl\remove_update_maintenance_nag', 1);
 }
 
 if (!empty($options['remove-help-tabs'])) {
-    function omnictrl_remove_help_tabs() {
+    /**
+     * 
+     *  @wp-action admin_head
+     * 
+     */
+    function remove_help_tabs() {
         $screen = get_current_screen();
 
         if ($screen) {
             $screen->remove_help_tabs();
         }
     }
-    add_action('admin_head', 'omnictrl_remove_help_tabs');
+    add_action('admin_head', 'OmniCtrl\remove_help_tabs');
 }
 
 if (!empty($options['remove-admin-footer-message'])) {
@@ -283,21 +288,21 @@ if (!empty($options['remove-admin-footer-version'])) {
 }
 
 if (!empty($options['remove-wp-toolbar-wp-menu'])) {
-    function omnictrl_wp_toolbar_remove_wp_logo($wptb) {
+    function wp_toolbar_remove_wp_logo($wptb) {
         $wptb->remove_node('wp-logo');
     }
-    add_action('admin_bar_menu', 'omnictrl_wp_toolbar_remove_wp_logo', 99);
+    add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_wp_logo', 99);
 }
 
 if (!empty($options['remove-wp-toolbar-customize'])) {
-    function omnictrl_wp_toolbar_remove_customize($wptb) {
+    function wp_toolbar_remove_customize($wptb) {
         $wptb->remove_node('customize');
     }
-    add_action('admin_bar_menu', 'omnictrl_wp_toolbar_remove_customize', 99);
+    add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_customize', 99);
 }
 
 if (!empty($options['remove-howdy'])) {
-    function omnictrl_remove_howdy($wptb) {
+    function remove_howdy($wptb) {
         $node = $wptb->get_node('my-account');
         $text = str_replace('Howdy, ', '', $node->title);
 
@@ -306,7 +311,7 @@ if (!empty($options['remove-howdy'])) {
             'title' => $text,
         ]);
     }
-    add_filter('admin_bar_menu', 'omnictrl_remove_howdy', 25);
+    add_filter('admin_bar_menu', 'OmniCtrl\remove_howdy', 25);
 }
 
 if (!empty($options['remove-wp-toolbar-updraftplus'])) {
