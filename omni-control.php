@@ -120,7 +120,7 @@ $options = get_option('omnictrl');
  *
  *
  */
-function plugin_action_links($links) {
+function plugin_action_links(array $links): array {
     $name = __('Settings', 'omni-control');
     $href = admin_url('options-general.php?page=omni-control');
     $link = ['<a href="' . $href . '">' . $name . '</a>'];
