@@ -159,7 +159,7 @@ if (!empty($options['reverse-document-title-parts'])) {
      *  @wp-filter document_title_parts
      *
      */
-    function document_title_parts_reverse($title): array {
+    function document_title_parts_reverse(array $title): array {
         $sitename = '';
 
         if (isset($title['site'])) {
