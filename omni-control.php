@@ -25,8 +25,6 @@ namespace OmniCtrl;
  */
 defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.2.8');
 
-
-
 /**
  *
  *
