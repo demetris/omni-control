@@ -45,7 +45,7 @@ register_activation_hook(__FILE__, 'OmniCtrl\set_activation_hook');
  *
  *  Creates transient data during activation
  *
- *  @since 0.0.1
+ *  @since 0.1.0
  *
  */
 function set_activation_hook() {
@@ -56,7 +56,7 @@ function set_activation_hook() {
  *
  *  Displays admin notice on activation if transient data is there
  *
- *  @since 0.0.1
+ *  @since 0.1.0
  *  @wp-action admin_notices
  *
  */
@@ -107,7 +107,7 @@ $options = get_option('omnictrl');
  *
  *  Appends link to settings screen by filtering the plugin’s action links array
  *
- *  @since 0.0.1
+ *  @since 0.1.0
  *  @wp-filter plugin_action_links_
  *
  */
@@ -145,7 +145,7 @@ if (!empty($options['reverse-document-title-parts'])) {
      *  For keys that exist in both arrays, the elements from the left-hand array will be used,
      *  and the matching elements from the right-hand array will be ignored.
      *
-     *  @since 0.0.1
+     *  @since 0.1.0
      *  @link http://php.net/manual/en/language.operators.array.php
      *  @wp-filter document_title_parts
      *
@@ -250,7 +250,7 @@ if (!empty($options['remove-jquery-migrate'])) {
      *
      *  Removes the jQuery Migrate script from the jQuery bundle
      *
-     *  @since 0.0.1
+     *  @since 0.1.0
      *  @wp-action wp_default_scripts
      *  @param WP_Scripts $scripts WP_Scripts object.
      *
