@@ -19,13 +19,11 @@ Puts the site title before the page title. Useful if you prefer this order but d
 
 ### Remove jQuery Migrate
 
-Can break themes and plugins! If it does, contact their authors and ask kindly if they could find the time to update their code.
-
-[On the future of jQuery Migrate in WordPress core](https://make.wordpress.org/core/2020/06/29/updating-jquery-version-shipped-with-wordpress/)
+Can break themes and plugins! If it does, contact their authors and ask kindly if they could find the time to update their code. – [On the future of jQuery Migrate in WordPress core](https://make.wordpress.org/core/2020/06/29/updating-jquery-version-shipped-with-wordpress/)
 
 ### Remove type from CSS and JavaScript resources – DEPRECATED
 
-Not needed for themes that declare support for HTML5 *script* and *style* ([possible since WordPress 5.3 and November 2019](https://make.wordpress.org/core/2019/10/15/miscellaneous-developer-focused-changes-in-5-3/)).
+Not needed for themes that declare support for HTML5 *script* and *style* ([added in WordPress 5.3](https://make.wordpress.org/core/2019/10/15/miscellaneous-developer-focused-changes-in-5-3/)).
 
 ###  Remove query string from static resources – TENTATIVE
 
