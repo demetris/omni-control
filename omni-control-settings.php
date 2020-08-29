@@ -24,15 +24,10 @@ function omnictrl_options_page() {
 
     echo '<h2>' . __('Omni Control', 'omni-control') . '</h2>' . "\n";
 
-    echo '<style>';
-    echo '.form-table th { width: 320px; }';
-    echo '#omnictrl-unselect-all { margin-left: 10px; }';
-    echo '</style>' . "\n";
-
-    echo '<p>';
+    echo '<div class="select-unselect-all">';
     submit_button(__('Select All', 'omni-control'), 'secondary', 'omnictrl-select-all', false);
     submit_button(__('Deselect All', 'omni-control'), 'secondary', 'omnictrl-unselect-all', false);
-    echo '</p>' . "\n";
+    echo '</div>';
 
     echo '<form action="options.php" method="post">' . "\n";
     settings_fields('omnictrl');

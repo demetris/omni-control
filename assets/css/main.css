@@ -1,0 +1,32 @@
+
+.select-unselect-all {
+    margin-top: 40px;
+}
+
+#omnictrl-unselect-all {
+    margin-left: 12px;
+}
+
+form h2 {
+    margin-top: 2em;
+}
+
+form h2:first-of-type {
+    margin-top: 3em;
+}
+
+.form-table th {
+    width: 384px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.form-table td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+form .submit {
+    margin-top: 50px;
+}

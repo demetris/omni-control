@@ -14,9 +14,18 @@
     GitHub Plugin URI:      https://github.com/demetris/omni-control
 */
 
-/**
+/*
  *
- *  Get required files
+ *  Constants
+ *
+ */
+defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.2.8');
+
+
+
+/*
+ *
+ *  Required files
  *
  */
 require dirname(__FILE__) . '/omni-control-settings.php';
@@ -70,14 +79,15 @@ add_action('admin_notices', 'omnictrl_admin_notices_activation');
  *  @wp-action admin_enqueue_scripts
  *
  */
-function omnictrl_enqueue_admin_css_js() {
-    if (get_current_screen()->id != 'settings_page_omni-control') {
+function omnictrl_enqueue_admin_assets() {
+    if (get_current_screen()->id !== 'settings_page_omni-control') {
         return;
     }
 
-    wp_enqueue_script('omni-control', plugin_dir_url(__FILE__) . 'assets/js/main.js', ['jquery'], null, true);
+    wp_enqueue_script('omni-control-admin', plugin_dir_url(__FILE__) . 'assets/js/main.js', ['jquery'], OMNICTRL_VERSION, true);
+    wp_enqueue_style('omni-control-admin', plugin_dir_url(__FILE__) . 'assets/css/main.css', [], OMNICTRL_VERSION);
 }
-add_action('admin_enqueue_scripts', 'omnictrl_enqueue_admin_css_js');
+add_action('admin_enqueue_scripts', 'omnictrl_enqueue_admin_assets');
 
 /**
  *
