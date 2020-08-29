@@ -8,6 +8,8 @@
  *
  */
 
+namespace OmniCtrl;
+
 function omnictrl_admin_menu() {
     add_options_page(
         __('Omni Control Settings', 'omni-control'),

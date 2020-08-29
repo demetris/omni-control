@@ -14,6 +14,8 @@
     GitHub Plugin URI:      https://github.com/demetris/omni-control
 */
 
+namespace OmniCtrl;
+
 /*
  *
  *  Constants
