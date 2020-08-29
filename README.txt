@@ -6,7 +6,7 @@ Donate link:
 Tags:
 Requires at least:  4.9.6
 Tested up to:
-Requires PHP:       5.6
+Requires PHP:       7.3
 Stable tag:
 License:            GPL-2.0
 License URI:        https://opensource.org/licenses/GPL-2.0
