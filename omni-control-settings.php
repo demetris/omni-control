@@ -448,7 +448,7 @@ function settings_init() {
 }
 add_action('admin_init', 'OmniCtrl\settings_init');
 
-function render_checkbox($args) {
+function render_checkbox($args): void {
     $options    = get_option('omnictrl');
     $field      = $args['field'];
     $name       = 'omnictrl[' . $field . ']';

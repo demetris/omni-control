@@ -143,10 +143,9 @@ if (!empty($options['reverse-document-title-parts'])) {
      *  @since 0.0.1
      *  @link http://php.net/manual/en/language.operators.array.php
      *  @wp-filter document_title_parts
-     *  @return array
      *
      */
-    function document_title_parts_reverse($title) {
+    function document_title_parts_reverse($title): array {
         $sitename = '';
 
         if (isset($title['site'])) {
@@ -159,12 +158,12 @@ if (!empty($options['reverse-document-title-parts'])) {
 }
 
 if (!empty($options['remove-doc-css-js-type'])) {
-    function remove_css_type($html) {
+    function remove_css_type($html): string {
         return str_replace("type='text/css' ", '', $html);
     }
     add_filter('style_loader_tag', 'OmniCtrl\remove_css_type');
 
-    function remove_js_type($html) {
+    function remove_js_type($html): string {
         return str_replace("type='text/javascript' ", '', $html);
         return str_replace(' type="text/javascript"', '', $html);
     }
