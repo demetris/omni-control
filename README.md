@@ -21,7 +21,7 @@ Puts the site title before the page title. Useful if you prefer this order but d
 
 Can break themes and plugins! If it does, contact their authors and ask kindly if they could find the time to update their code. – [On the future of jQuery Migrate in WordPress core](https://make.wordpress.org/core/2020/06/29/updating-jquery-version-shipped-with-wordpress/)
 
-### Remove type from CSS and JavaScript resources – CONDITIONAL
+### Remove type from script and style elements – CONDITIONAL
 
 Only takes effect if the current theme does not register support for HTML5 *script* and *style* elements. (If the theme registers support for HTML5 *script* and *style*, there is nothing to remove.)
 
