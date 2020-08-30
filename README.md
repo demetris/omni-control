@@ -23,7 +23,7 @@ Can break themes and plugins! If it does, contact their authors and ask kindly i
 
 ### Remove type from CSS and JavaScript resources – CONDITIONAL
 
-Only takes effect if the current theme does not register support for HTML5 *script* and *style* tags. (If the theme registers support for HTML5 *script* and *style*, there is nothing to remove.)
+Only takes effect if the current theme does not register support for HTML5 *script* and *style* elements. (If the theme registers support for HTML5 *script* and *style*, there is nothing to remove.)
 
 ###  Remove query string from static resources – TENTATIVE
 
