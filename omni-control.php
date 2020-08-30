@@ -297,20 +297,20 @@ if (!empty($options['remove-http-headers-rest-api-link'])) {
     remove_action('template_redirect', 'rest_output_link_header', 11, 0);
 }
 
-if (!empty($options['remove-update-maintenance-nag'])) {
+if (!empty($options['disable-update-maintenance-nag'])) {
     /**
      *
      *  @since 0.1.6
      *  @wp-action wp_head
      *
      */
-    function remove_update_maintenance_nag() {
+    function disable_update_maintenance_nag() {
         if (!current_user_can('update_core')) {
             remove_action('admin_notices', 'update_nag', 3);
             remove_action('admin_notices', 'maintenance_nag', 10);
         }
     }
-    add_action('admin_head', 'OmniCtrl\remove_update_maintenance_nag', 1);
+    add_action('admin_head', 'OmniCtrl\disable_update_maintenance_nag', 1);
 }
 
 if (!empty($options['remove-help-tabs'])) {

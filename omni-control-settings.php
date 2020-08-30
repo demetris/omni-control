@@ -48,7 +48,7 @@ function options_page(): void {
     submit_button();
     echo '</form>';
 
-    echo '</div>';
+    echo '</div>';  
 }
 
 /**
@@ -355,14 +355,14 @@ function settings_init() {
     );
 
     add_settings_field(
-        'remove-update-maintenance-nag',
-        __('Remove update/maintenance nag for non-admins', 'omni-control'),
+        'disable-update-maintenance-nag',
+        __('Disable update/maintenance nag for non-admins', 'omni-control'),
         'OmniCtrl\render_checkbox',
         'omnictrl',
         'omnictrl-admin',
         [
-            'field' => 'remove-update-maintenance-nag',
-            'label_for' => 'omnictrl[remove-update-maintenance-nag]'
+            'field' => 'disable-update-maintenance-nag',
+            'label_for' => 'omnictrl[disable-update-maintenance-nag]'
         ]
     );
 
