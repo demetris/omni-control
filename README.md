@@ -13,23 +13,15 @@ Tweaks can be enabled and disabled individually or all at once. By default all t
 Notes
 --------------------------------------------------------------------------------
 
-Most settings are self-explanatory. Below are a few notes that go beyond the obvious.
+Most tweaks are self-explanatory. Below are a few notes for the rest.
 
-### Reverse the parts of the document title
+**Reverse the parts of the document title**. Puts the site title before the page title. Useful if you prefer this order but don’t use an SEO plugin. If you use an SEO plugin, the reversal is better dealt there.
 
-Puts the site title before the page title. Useful if you prefer this order but don’t use an SEO plugin. If you use an SEO plugin, the reversal is better dealt there.
+**Remove jQuery Migrate**. Can break themes and plugins that use old versions of jQuery! However, plugins and themes that break without jQuery Migrate will need updating sooner or later: [The future of jQuery Migrate in WordPress](https://make.wordpress.org/core/2020/06/29/updating-jquery-version-shipped-with-wordpress/)
 
-### Remove jQuery Migrate
+**Remove type from script and style elements**. **CONDITIONAL**. Only runs if the current theme does not register support for HTML5 *script* and *style* elements. (If the theme registers support for HTML5 *script* and *style*, there is nothing to remove.)
 
-Can break themes and plugins that use old versions of jQuery! – [The future of jQuery Migrate in WordPress](https://make.wordpress.org/core/2020/06/29/updating-jquery-version-shipped-with-wordpress/)
-
-### Remove type from script and style elements – CONDITIONAL
-
-Only runs if the current theme does not register support for HTML5 *script* and *style* elements. (If the theme registers support for HTML5 *script* and *style*, there is nothing to remove.)
-
-###  Remove query string from static resources – TENTATIVE
-
-Popular tweak but I have not seen real-world benefits from using it.
+**Remove query string from static resources**. **TENTATIVE**. Popular tweak but I have not seen real-world benefits from using it.
 
 
 Tweaks
