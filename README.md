@@ -2,9 +2,9 @@
 Omni Control
 ================================================================================
 
-Omni Control is an assortment of tweaks for WordPress websites.
+Omni Control is an assortment of optional tweaks for WordPress websites.
 
-It offers tweaks that are simple and that rely on simple and stable parts of the WordPress API.
+It offers tweaks that are simple to implement and that rely on simple and stable parts of the WordPress API.
 
 
 
@@ -21,9 +21,9 @@ Puts the site title before the page title. Useful if you prefer this order but d
 
 Can break themes and plugins! If it does, contact their authors and ask kindly if they could find the time to update their code. – [On the future of jQuery Migrate in WordPress core](https://make.wordpress.org/core/2020/06/29/updating-jquery-version-shipped-with-wordpress/)
 
-### Remove type from CSS and JavaScript resources – DEPRECATED
+### Remove type from CSS and JavaScript resources – CONDITIONAL
 
-Not needed for themes that declare support for HTML5 *script* and *style* ([added in WordPress 5.3](https://make.wordpress.org/core/2019/10/15/miscellaneous-developer-focused-changes-in-5-3/)).
+Only takes effect if the current theme does not register support for HTML5 *script* and *style* tags. (If the theme registers support for HTML5 *script* and *style*, there is nothing to remove.)
 
 ###  Remove query string from static resources – TENTATIVE
 

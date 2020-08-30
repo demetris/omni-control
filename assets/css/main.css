@@ -27,6 +27,14 @@ form h2:first-of-type {
     padding-bottom: 5px;
 }
 
+.omnictrl-note {
+    margin-left: 13px;
+
+    vertical-align: inherit;
+
+    font-style: italic;
+}
+
 form .submit {
     margin-top: 50px;
 }

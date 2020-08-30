@@ -18,18 +18,14 @@ namespace OmniCtrl;
 
 /**
  *
- *
  *  Set constants
- *
  *
  */
 defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.2.8');
 
 /**
  *
- *
  *  Get required files
- *
  *
  */
 require dirname(__FILE__) . '/omni-control-settings.php';
@@ -162,31 +158,42 @@ if (!empty($options['reverse-document-title-parts'])) {
     add_filter('document_title_parts', 'OmniCtrl\document_title_parts_reverse');
 }
 
-if (!empty($options['remove-doc-css-js-type'])) {
-    /**
-     *
-     *  @since 0.1.5
-     *  @wp-filter script_loader_tag
-     *
-     */
-    function remove_css_type($html): string {
-        return str_replace("type='text/css' ", '', $html);
-    }
-    add_filter('style_loader_tag', 'OmniCtrl\remove_css_type');
 
+if (!empty($options['remove-doc-script-style-type'])) {
     /**
      *
      *  @since 0.1.5
+     *  @since 0.3.0 Do nothing if there is nothing to remove
      *  @wp-filter style_loader_tag
      *
      */
-    function remove_js_type($html): string {
+    function remove_script_type(string $html): string {
+        if (isset(array_flip(get_theme_support('html5')[0])['script'])) {
+            return $html;
+        }
+
         $html = str_replace("type='text/javascript' ", '', $html);
         $html = str_replace(' type="text/javascript"', '', $html);
 
         return $html;
     }
-    add_filter('script_loader_tag', 'OmniCtrl\remove_js_type');
+    add_filter('script_loader_tag', 'OmniCtrl\remove_script_type');
+
+    /**
+     *
+     *  @since 0.1.5
+     *  @since 0.3.0 Do nothing if there is nothing to remove
+     *  @wp-filter script_loader_tag
+     *
+     */
+    function remove_style_type(string $html): string {
+        if (isset(array_flip(get_theme_support('html5')[0])['style'])) {
+            return $html;
+        }
+
+        return str_replace("type='text/css' ", '', $html);
+    }
+    add_filter('style_loader_tag', 'OmniCtrl\remove_style_type');
 }
 
 if (!empty($options['remove-doc-head-rsd-link'])) {

@@ -1,7 +1,8 @@
 ﻿
-##  0.3.0 – 2020-08-29
+##  0.3.0 – 2020-08-30
 -   Added option to remove REST API link from the document head.
 -   Added option to remove canonical link from the document head.
+-   Modified removal of *script* and *style* type to take effect only if needed
 -   Increased required PHP version to 7.3.
 -   Improved spacing of settings page.
 

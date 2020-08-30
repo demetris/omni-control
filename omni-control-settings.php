@@ -12,10 +12,8 @@ namespace OmniCtrl;
 
 /**
  *
- *
  *  @since 0.1.0
  *  @wp-action admin_menu
- *
  *
  */
 function admin_menu() {
@@ -31,9 +29,7 @@ add_action('admin_menu', 'OmniCtrl\admin_menu');
 
 /**
  *
- *
  *  @since 0.1.0
- *
  *
  */
 function options_page(): void {
@@ -57,10 +53,8 @@ function options_page(): void {
 
 /**
  *
- *
  *  @since 0.1.0
  *  @wp-action admin_init
- *
  *
  */
 function settings_init() {
@@ -149,14 +143,14 @@ function settings_init() {
     );
 
     add_settings_field(
-        'remove-doc-css-js-type',
-        __('Remove type from CSS and JavaScript resources', 'omni-control'),
+        'remove-doc-script-style-type',
+        __('Remove type from script and style elements', 'omni-control'),
         'OmniCtrl\render_checkbox',
         'omnictrl',
         'omnictrl-html-doc',
         [
-            'field' => 'remove-doc-css-js-type',
-            'label_for' => 'omnictrl[remove-doc-css-js-type]'
+            'field' => 'remove-doc-script-style-type',
+            'label_for' => 'omnictrl[remove-doc-script-style-type]'
         ]
     );
 
@@ -473,20 +467,28 @@ add_action('admin_init', 'OmniCtrl\settings_init');
 
 /**
  *
- *
  *  @since 0.1.0
- *
+ *  @since 0.3.0 Added conditional note for removal of script and style type
  *
  */
 function render_checkbox($args): void {
-    $options    = get_option('omnictrl');
-    $field      = $args['field'];
-    $name       = 'omnictrl[' . $field . ']';
-    $retrieved  = isset($options[$field])? 1: 0;
+    $options        = get_option('omnictrl');
+    $field          = $args['field'];
+    $name           = 'omnictrl[' . $field . ']';
+    $retrieved      = isset($options[$field])? 1: 0;
+    $html5          = array_flip(get_theme_support('html5')[0]);
 
     printf(
         '<input class="omnictrl-checkbox" type="checkbox" id="%1$s" name="%1$s" %2$s value="1"/>',
         $name,
         checked($retrieved, 1, 0)
     );
+
+    if (
+            $name === 'omnictrl[remove-doc-script-style-type]'
+        &&  isset($html5['script'])
+        &&  isset($html5['style'])
+        ) {
+        echo '<span class="omnictrl-note">' . __('Not needed in current theme!', 'omni-control') . '</span>';
+    }
 }
