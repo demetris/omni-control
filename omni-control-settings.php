@@ -33,22 +33,22 @@ add_action('admin_menu', 'OmniCtrl\admin_menu');
  *
  */
 function options_page(): void {
-    echo '<div class="wrap">' . "\n";
+    echo '<div class="wrap">';
 
-    echo '<h2>' . __('Omni Control', 'omni-control') . '</h2>' . "\n";
+    echo '<h2>' . __('Omni Control', 'omni-control') . '</h2>';
 
     echo '<div class="select-unselect-all">';
     submit_button(__('Select All', 'omni-control'), 'secondary', 'omnictrl-select-all', false);
     submit_button(__('Deselect All', 'omni-control'), 'secondary', 'omnictrl-unselect-all', false);
     echo '</div>';
 
-    echo '<form action="options.php" method="post">' . "\n";
+    echo '<form action="options.php" method="post">';
     settings_fields('omnictrl');
     do_settings_sections('omnictrl');
     submit_button();
-    echo '</form>' . "\n";
+    echo '</form>';
 
-    echo '</div>' . "\n";
+    echo '</div>';
 }
 
 /**
