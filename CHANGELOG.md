@@ -1,7 +1,8 @@
 ﻿
-##  0.3.0 – 2020-08-30
+##  0.3.0 – 2020-08-31
 -   Added option to remove REST API link from the document head.
 -   Added option to remove canonical link from the document head.
+-   Added list of tweaks to README
 -   Modified removal of *script* and *style* type to take effect only if needed
 -   Increased required PHP version to 7.3.
 -   Improved spacing of settings page.
@@ -41,7 +42,7 @@
 -   Increased required PHP version (5.6) and required WordPress version (4.9.6).
 
 ##  0.1.6 – 2018-05-22
--   Added option to remove core update/maintenance nag for non-admins.
+-   Added option to disable core update/maintenance nag for non-admins.
 -   Improved removal of type from JavaScript resources.
 
 ##  0.1.5 – 2018-04-22
