@@ -5,9 +5,7 @@ Omni Control
 
 Omni Control is a collection of tweaks for WordPress websites.
 
-It offers tweaks that are simple in implementation and that rely on simple and stable parts of the WordPress API.
-
-Tweaks can be enabled and disabled individually or all at once. By default all tweaks are disabled.
+Its tweaks can be enabled and disabled individually or all at once. By default all tweaks are disabled.
 
 
 Installation and updates
