@@ -407,33 +407,33 @@ function settings_init() {
     #
 
     add_settings_section(
-        'omnictrl-wp-toolbar',
+        'omnictrl-adminbar',
         __('WP Toolbar', 'omni-control'),
         null,
         'omnictrl'
     );
 
     add_settings_field(
-        'remove-wp-toolbar-wp-menu',
+        'remove-adminbar-wp-menu',
         __('Remove WordPress menu', 'omni-control'),
         'OmniCtrl\render_checkbox',
         'omnictrl',
-        'omnictrl-wp-toolbar',
+        'omnictrl-adminbar',
         [
-            'field' => 'remove-wp-toolbar-wp-menu',
-            'label_for' => 'omnictrl[remove-wp-toolbar-wp-menu]'
+            'field' => 'remove-adminbar-wp-menu',
+            'label_for' => 'omnictrl[remove-adminbar-wp-menu]'
         ]
     );
 
     add_settings_field(
-        'remove-wp-toolbar-customize',
+        'remove-adminbar-customize',
         __('Remove Customize link', 'omni-control'),
         'OmniCtrl\render_checkbox',
         'omnictrl',
-        'omnictrl-wp-toolbar',
+        'omnictrl-adminbar',
         [
-            'field' => 'remove-wp-toolbar-customize',
-            'label_for' => 'omnictrl[remove-wp-toolbar-customize]'
+            'field' => 'remove-adminbar-customize',
+            'label_for' => 'omnictrl[remove-adminbar-customize]'
         ]
     );
 
@@ -442,7 +442,7 @@ function settings_init() {
         __('Remove <em>Howdy</em>', 'omni-control'),
         'OmniCtrl\render_checkbox',
         'omnictrl',
-        'omnictrl-wp-toolbar',
+        'omnictrl-adminbar',
         [
             'field' => 'remove-howdy',
             'label_for' => 'omnictrl[remove-howdy]'
@@ -451,14 +451,14 @@ function settings_init() {
 
     if (class_exists('UpdraftPlus')) {
         add_settings_field(
-            'remove-wp-toolbar-updraftplus',
+            'remove-adminbar-updraftplus',
             __('Remove UpdraftPlus menu', 'omni-control'),
             'OmniCtrl\render_checkbox',
             'omnictrl',
-            'omnictrl-wp-toolbar',
+            'omnictrl-adminbar',
             [
-                'field' => 'remove-wp-toolbar-updraftplus',
-                'label_for' => 'omnictrl[remove-wp-toolbar-updraftplus]'
+                'field' => 'remove-adminbar-updraftplus',
+                'label_for' => 'omnictrl[remove-adminbar-updraftplus]'
             ]
         );
     }

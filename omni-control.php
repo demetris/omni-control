@@ -62,9 +62,9 @@ function admin_notices_activation() {
         $href = admin_url('options-general.php?page=omni-control');
         $link = '<a style="text-decoration: none" href="' . $href . '">' . $text . '</a>';
 
-        echo '<div class="updated notice is-dismissible">' . "\n";
-        echo '<p>' . sprintf(__('Please, visit the %s to set your preferences.', 'omni-control'), $link) . '</p>' . "\n";
-        echo '</div>' . "\n";
+        echo '<div class="updated notice is-dismissible">';
+        echo '<p>' . sprintf(__('Please, visit the %s to set your preferences.', 'omni-control'), $link) . '</p>';
+        echo '</div>';
 
         /**
          *
@@ -146,7 +146,7 @@ if (!empty($options['reverse-document-title-parts'])) {
      *  @wp-filter document_title_parts
      *
      */
-    function document_title_parts_reverse(array $title): array {
+    function reverse_document_title_parts(array $title): array {
         $sitename = '';
 
         if (isset($title['site'])) {
@@ -155,7 +155,7 @@ if (!empty($options['reverse-document-title-parts'])) {
 
         return ['site' => $sitename] + $title;
     }
-    add_filter('document_title_parts', 'OmniCtrl\document_title_parts_reverse');
+    add_filter('document_title_parts', 'OmniCtrl\reverse_document_title_parts');
 }
 
 
@@ -338,30 +338,30 @@ if (!empty($options['remove-admin-footer-version'])) {
     add_filter('update_footer', '__return_empty_string', 11);
 }
 
-if (!empty($options['remove-wp-toolbar-wp-menu'])) {
+if (!empty($options['remove-adminbar-wp-menu'])) {
     /**
      *
      *  @since 0.1.0 
      *  @wp-action admin_bar_menu
      *
      */
-    function wp_toolbar_remove_wp_logo(\WP_Admin_Bar $adminbar): void {
+    function remove_adminbar_wp_menu(\WP_Admin_Bar $adminbar): void {
         $adminbar->remove_node('wp-logo');
     }
-    add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_wp_logo', 99);
+    add_action('admin_bar_menu', 'OmniCtrl\remove_adminbar_wp_menu', 99);
 }
 
-if (!empty($options['remove-wp-toolbar-customize'])) {
+if (!empty($options['remove-adminbar-customize'])) {
     /**
      *
      *  @since 0.1.4
      *  @wp-action admin_bar_menu
      * 
      */
-    function wp_toolbar_remove_customize(\WP_Admin_Bar $adminbar): void {
+    function remove_adminbar_customize(\WP_Admin_Bar $adminbar): void {
         $adminbar->remove_node('customize');
     }
-    add_action('admin_bar_menu', 'OmniCtrl\wp_toolbar_remove_customize', 99);
+    add_action('admin_bar_menu', 'OmniCtrl\remove_adminbar_customize', 99);
 }
 
 if (!empty($options['remove-howdy'])) {
@@ -383,6 +383,6 @@ if (!empty($options['remove-howdy'])) {
     add_filter('admin_bar_menu', 'OmniCtrl\remove_howdy', 25);
 }
 
-if (!empty($options['remove-wp-toolbar-updraftplus'])) {
+if (!empty($options['remove-adminbar-updraftplus'])) {
     define('UPDRAFTPLUS_ADMINBAR_DISABLE', true);
 }
