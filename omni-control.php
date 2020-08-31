@@ -116,22 +116,47 @@ function add_action_links(array $links): array {
 }
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'OmniCtrl\add_action_links');
 
+/**
+ *
+ *  Disable smilies
+ *
+ */
 if (!empty($options['disable-smilies'])) {
     add_filter('option_use_smilies', '__return_false');
 }
 
+/**
+ *
+ *  Disable visual editor
+ *
+ */
 if (!empty($options['disable-visual-editor'])) {
     add_filter('user_can_richedit', '__return_false');
 }
 
+/**
+ *
+ *  Disable pingbacks completely
+ *
+ */
 if (!empty($options['disable-pings'])) {
     add_filter('pings_open', '__return_false');
 }
 
+/**
+ *
+ *  Remove WordPress.org link from meta widget
+ *
+ */
 if (!empty($options['remove-meta-widget-wordpress-link'])) {
     add_filter('widget_meta_poweredby', '__return_empty_string');
 }
 
+/**
+ *
+ *  Reverse document title parts
+ *
+ */
 if (!empty($options['reverse-document-title-parts'])) {
     /**
      *
@@ -158,7 +183,11 @@ if (!empty($options['reverse-document-title-parts'])) {
     add_filter('document_title_parts', 'OmniCtrl\reverse_document_title_parts');
 }
 
-
+/**
+ *
+ *  Remove type from script and style elements
+ *
+ */
 if (!empty($options['remove-doc-script-style-type'])) {
     /**
      *
@@ -196,34 +225,74 @@ if (!empty($options['remove-doc-script-style-type'])) {
     add_filter('style_loader_tag', 'OmniCtrl\remove_style_type');
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-doc-head-rsd-link'])) {
     remove_action('wp_head', 'rsd_link');
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-doc-head-wlw-manifest-link'])) {
     remove_action('wp_head', 'wlwmanifest_link');
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-doc-head-rest-api-link'])) {
     remove_action('wp_head', 'rest_output_link_wp_head', 10);
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-doc-head-shortlink'])) {
     remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-doc-head-prev-next-rel-links'])) {
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 }
 
+/**
+ *
+ *  Remove canonical link from document HEAD
+ *
+ */
 if (!empty($options['remove-doc-head-canonical-link'])) {
     remove_action('wp_head', 'rel_canonical');
 }
 
+/**
+ *
+ *  Remove WordPress version from document HEAD
+ *
+ */
 if (!empty($options['remove-doc-head-wordpress-version'])) {
     remove_action('wp_head', 'wp_generator');
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-dashicons'])) {
     /**
      *
@@ -239,6 +308,11 @@ if (!empty($options['remove-dashicons'])) {
     add_action('wp_print_styles', 'OmniCtrl\remove_dashicons', 99);
 }
 
+/**
+ *
+ *  Remove Gutenberg CSS
+ *
+ */
 if (!empty($options['remove-gutenberg-css'])) {
     /**
      *
@@ -252,6 +326,11 @@ if (!empty($options['remove-gutenberg-css'])) {
     add_action('wp_print_styles', 'OmniCtrl\remove_gutenberg_css', 100);
 }
 
+/**
+ *
+ *  Remove jQuery Migrate
+ *
+ */
 if (!empty($options['remove-jquery-migrate'])) {
     /**
      *
@@ -274,6 +353,11 @@ if (!empty($options['remove-jquery-migrate'])) {
     add_action('wp_default_scripts', 'OmniCtrl\remove_jquery_migrate');
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-css-js-query-strings'])) {
     /**
      *
@@ -289,14 +373,29 @@ if (!empty($options['remove-css-js-query-strings'])) {
     add_filter('style_loader_src', 'OmniCtrl\remove_query_string', 15, 1);
 }
 
+/**
+ *
+ *  Remove shortlink from HTTP headers
+ *
+ */
 if (!empty($options['remove-http-headers-shortlink'])) {
     remove_action('template_redirect', 'wp_shortlink_header', 11);
 }
 
+/**
+ *
+ *  Remove REST API link from HTTP headers
+ *
+ */
 if (!empty($options['remove-http-headers-rest-api-link'])) {
     remove_action('template_redirect', 'rest_output_link_header', 11, 0);
 }
 
+/**
+ *
+ *  Disable update/maintenance nag for non-admins
+ *
+ */
 if (!empty($options['disable-update-maintenance-nag'])) {
     /**
      *
@@ -313,6 +412,11 @@ if (!empty($options['disable-update-maintenance-nag'])) {
     add_action('admin_head', 'OmniCtrl\disable_update_maintenance_nag', 1);
 }
 
+/**
+ *
+ *  Remove help tabs from dashboard
+ *
+ */
 if (!empty($options['remove-help-tabs'])) {
     /**
      *
@@ -330,14 +434,29 @@ if (!empty($options['remove-help-tabs'])) {
     add_action('admin_head', 'OmniCtrl\remove_help_tabs');
 }
 
+/**
+ *
+ *  Remove message from dashboard footer
+ *
+ */
 if (!empty($options['remove-admin-footer-message'])) {
     add_filter('admin_footer_text', '__return_empty_string');
 }
 
+/**
+ *
+ *  Remove WordPress version from dashboard footer
+ *
+ */
 if (!empty($options['remove-admin-footer-version'])) {
     add_filter('update_footer', '__return_empty_string', 11);
 }
 
+/**
+ *
+ *  Remove WordPress menu from admin bar
+ *
+ */
 if (!empty($options['remove-adminbar-wp-menu'])) {
     /**
      *
@@ -351,6 +470,11 @@ if (!empty($options['remove-adminbar-wp-menu'])) {
     add_action('admin_bar_menu', 'OmniCtrl\remove_adminbar_wp_menu', 99);
 }
 
+/**
+ *
+ *  Remove Customize link from admin bar
+ *
+ */
 if (!empty($options['remove-adminbar-customize'])) {
     /**
      *
@@ -364,6 +488,11 @@ if (!empty($options['remove-adminbar-customize'])) {
     add_action('admin_bar_menu', 'OmniCtrl\remove_adminbar_customize', 99);
 }
 
+/**
+ *
+ *  Remove Howdy
+ *
+ */
 if (!empty($options['remove-howdy'])) {
     /**
      *
@@ -383,6 +512,11 @@ if (!empty($options['remove-howdy'])) {
     add_filter('admin_bar_menu', 'OmniCtrl\remove_howdy', 25);
 }
 
+/**
+ *
+ *
+ *
+ */
 if (!empty($options['remove-adminbar-updraftplus'])) {
     define('UPDRAFTPLUS_ADMINBAR_DISABLE', true);
 }
