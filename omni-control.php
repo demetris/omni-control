@@ -514,7 +514,7 @@ if (!empty($options['remove-howdy'])) {
 
 /**
  *
- *
+ *  Remove UpdraftPlus menu from admin bar
  *
  */
 if (!empty($options['remove-adminbar-updraftplus'])) {
