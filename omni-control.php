@@ -6,7 +6,7 @@
     Plugin Name:            Omni Control
     Plugin URI:             https://github.com/demetris/omni-control
     Description:            A collection of tweaks for WordPress
-    Version:                0.2.8
+    Version:                0.3.0
     Author:                 Demetris Kikizas
     Author URI:             https://kikizas.com/
     Licence:                GPL-2.0
@@ -21,7 +21,7 @@ namespace OmniCtrl;
  *  Set constants
  *
  */
-defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.2.8');
+defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.3.0');
 
 /**
  *
