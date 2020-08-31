@@ -10,6 +10,12 @@ It offers tweaks that are simple in implementation and that rely on simple and s
 Tweaks can be enabled and disabled individually or all at once. By default all tweaks are disabled.
 
 
+Installation and updates
+--------------------------------------------------------------------------------
+
+Omni Control can be installed and updated with [GitHub Updater](https://github.com/afragen/github-updater).
+
+
 Notes
 --------------------------------------------------------------------------------
 
