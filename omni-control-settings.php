@@ -471,7 +471,7 @@ add_action('admin_init', 'OmniCtrl\settings_init');
  *  @since 0.3.0 Added conditional note for removal of script and style type
  *
  */
-function render_checkbox($args): void {
+function render_checkbox(array $args): void {
     $options        = get_option('omnictrl');
     $field          = $args['field'];
     $name           = 'omnictrl[' . $field . ']';

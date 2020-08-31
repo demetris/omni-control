@@ -107,14 +107,14 @@ $options = get_option('omnictrl');
  *  @wp-filter plugin_action_links_
  *
  */
-function plugin_action_links(array $links): array {
+function add_action_links(array $links): array {
     $link = [
         '<a href="' . admin_url('options-general.php?page=omni-control') . '">' . __('Settings', 'omni-control') . '</a>'
     ];
 
     return array_merge($links, $link);
 }
-add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'OmniCtrl\plugin_action_links');
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'OmniCtrl\add_action_links');
 
 if (!empty($options['disable-smilies'])) {
     add_filter('option_use_smilies', '__return_false');
@@ -262,7 +262,7 @@ if (!empty($options['remove-jquery-migrate'])) {
      *  @param WP_Scripts $scripts WP_Scripts object.
      *
      */
-    function remove_jquery_migrate($scripts) {
+    function remove_jquery_migrate(\WP_Scripts $scripts) {
         if (isset($scripts->registered['jquery'])) {
             $script = $scripts->registered['jquery'];
 
@@ -282,7 +282,7 @@ if (!empty($options['remove-css-js-query-strings'])) {
      *  @wp-filter style_loader_src
      *
      */
-    function remove_query_string($src) {
+    function remove_query_string(string $src): string {
         return add_query_arg('ver', null, $src);
     }
     add_filter('script_loader_src', 'OmniCtrl\remove_query_string', 15, 1);
