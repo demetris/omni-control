@@ -34,6 +34,7 @@ Tweaks
 ### Miscellaneous
 
 -   Disable smilies
+-   Disable [wptexturize](https://developer.wordpress.org/reference/functions/wptexturize/)
 -   Disable visual editor
 -   Disable pings completely
 -   Remove WordPress.org link from meta widget
