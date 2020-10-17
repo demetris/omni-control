@@ -48,7 +48,7 @@ function options_page(): void {
     submit_button();
     echo '</form>';
 
-    echo '</div>';  
+    echo '</div>';
 }
 
 /**
@@ -80,6 +80,18 @@ function settings_init() {
         [
             'field' => 'disable-smilies',
             'label_for' => 'omnictrl[disable-smilies]'
+        ]
+    );
+
+    add_settings_field(
+        'disable-wptexturize',
+        __('Disable wptexturize', 'omni-control'),
+        'OmniCtrl\render_checkbox',
+        'omnictrl',
+        'omnictrl-misc',
+        [
+            'field' => 'disable-wptexturize',
+            'label_for' => 'omnictrl[disable-wptexturize]'
         ]
     );
 

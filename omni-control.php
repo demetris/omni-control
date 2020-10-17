@@ -127,6 +127,15 @@ if (!empty($options['disable-smilies'])) {
 
 /**
  *
+ *  Disable wptexturize()
+ *
+ */
+if (!empty($options['disable-wptexturize'])) {
+    add_filter('run_wptexturize', '__return_false');
+}
+
+/**
+ *
  *  Disable visual editor
  *
  */
@@ -420,7 +429,7 @@ if (!empty($options['disable-update-maintenance-nag'])) {
 if (!empty($options['remove-help-tabs'])) {
     /**
      *
-     *  @since 0.1.0 
+     *  @since 0.1.0
      *  @wp-action admin_head
      *
      */
@@ -460,7 +469,7 @@ if (!empty($options['remove-admin-footer-version'])) {
 if (!empty($options['remove-adminbar-wp-menu'])) {
     /**
      *
-     *  @since 0.1.0 
+     *  @since 0.1.0
      *  @wp-action admin_bar_menu
      *
      */
@@ -480,7 +489,7 @@ if (!empty($options['remove-adminbar-customize'])) {
      *
      *  @since 0.1.4
      *  @wp-action admin_bar_menu
-     * 
+     *
      */
     function remove_adminbar_customize(\WP_Admin_Bar $adminbar): void {
         $adminbar->remove_node('customize');
