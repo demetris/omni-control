@@ -1,4 +1,7 @@
 ﻿
+##  0.3.1 – 2020-10-17
+-   Added option to disable wptexturize.
+
 ##  0.3.0 – 2020-08-31
 -   Added option to remove REST API link from the document head.
 -   Added option to remove canonical link from the document head.
