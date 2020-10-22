@@ -21,7 +21,7 @@ namespace OmniCtrl;
  *  Set constants
  *
  */
-defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.3.0');
+defined('OMNICTRL_VERSION') || define('OMNICTRL_VERSION', '0.3.2');
 
 /**
  *
