@@ -488,7 +488,7 @@ function render_checkbox(array $args): void {
     $field          = $args['field'];
     $name           = 'omnictrl[' . $field . ']';
     $retrieved      = isset($options[$field])? 1: 0;
-    $html5          = array_flip(get_theme_support('html5')[0]);
+    $html5          = get_theme_support('html5') ? array_flip(get_theme_support('html5')[0]) : [];
 
     printf(
         '<input class="omnictrl-checkbox" type="checkbox" id="%1$s" name="%1$s" %2$s value="1"/>',
@@ -498,8 +498,8 @@ function render_checkbox(array $args): void {
 
     if (
             $name === 'omnictrl[remove-doc-script-style-type]'
-        &&  isset($html5['script'])
-        &&  isset($html5['style'])
+        &&  (get_theme_support('html5') && isset($html5['script']))
+        &&  (get_theme_support('html5') && isset($html5['style']))
         ) {
         echo '<span class="omnictrl-note">' . __('Not needed in current theme!', 'omni-control') . '</span>';
     }

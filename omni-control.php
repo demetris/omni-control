@@ -206,7 +206,7 @@ if (!empty($options['remove-doc-script-style-type'])) {
      *
      */
     function remove_script_type(string $html): string {
-        if (isset(array_flip(get_theme_support('html5')[0])['script'])) {
+        if (get_theme_support('html5') && isset(array_flip(get_theme_support('html5')[0])['script'])) {
             return $html;
         }
 
@@ -225,7 +225,7 @@ if (!empty($options['remove-doc-script-style-type'])) {
      *
      */
     function remove_style_type(string $html): string {
-        if (isset(array_flip(get_theme_support('html5')[0])['style'])) {
+        if (get_theme_support('html5') && isset(array_flip(get_theme_support('html5')[0])['style'])) {
             return $html;
         }
 
