@@ -1,4 +1,7 @@
 ﻿
+##  0.3.2 – 2020-10-22
+-   Fixed error caused by assuming all themes register support for HTML5 features.
+
 ##  0.3.1 – 2020-10-17
 -   Added option to disable wptexturize.
 
